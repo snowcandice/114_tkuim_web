@@ -33,9 +33,10 @@ function createParticipantCard() {
         <p id="email-${index}-error" class="text-danger small mb-0" aria-live="polite"></p>
       </div>
     </div>
-  
+  `;
   return wrapper;
 }
+
 
 function updateCount() {
   countLabel.textContent = list.children.length;
