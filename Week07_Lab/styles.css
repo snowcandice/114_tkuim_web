@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    min-height: 100vh;
+}
+
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* 錯誤輸入框樣式 */
+input:invalid:not(:placeholder-shown),
+input.invalid { /* JS 驗證失敗時 */
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9em;
+    margin-top: 5px;
+    height: 1.2em; /* 保持空間，避免跳動 */
+}
+
+/* 興趣標籤樣式 */
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 5px 0;
+}
+
+.interest-tag {
+    background-color: #ecf0f1;
+    color: #34495e;
+    border: 1px solid #bdc3c7;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.interest-tag.selected {
+    background-color: #3498db; /* 選中顏色 */
+    color: white;
+    border-color: #2980b9;
+}
+
+/* 密碼強度條 */
+.strength-bar {
+    margin-top: 5px;
+    font-size: 0.85em;
+}
+
+.strength-text {
+    font-weight: bold;
+}
+
+.strength-bar[data-level="weak"] { color: #e74c3c; }
+.strength-bar[data-level="medium"] { color: #f39c12; }
+.strength-bar[data-level="strong"] { color: #27ae60; }
+
+/* 送出按鈕與防重送 */
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+#submitBtn {
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submitBtn:hover:not(:disabled) {
+    background-color: #27ad60;
+}
+
+#submitBtn:disabled { /* 防重送: 載入樣式 */
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    /* 簡易 Loading 視覺效果 */
+    position: relative;
+}
+
+#submitBtn:disabled::after {
+    content: '...';
+    margin-left: 5px;
+}
+
+.success-message {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    text-align: center;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員註冊表單 - 即時驗證</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>會員註冊</h1>
+        <form id="signupForm" novalidate>
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name" required aria-describedby="name-error">
+                <p id="name-error" class="error-message" role="alert"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required aria-describedby="email-error">
+                <p id="email-error" class="error-message" role="alert"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">手機 (10 碼數字)</label>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" maxlength="10" aria-describedby="phone-error">
+                <p id="phone-error" class="error-message" role="alert"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="password">密碼 (至少 8 碼，英數混合)</label>
+                <input type="password" id="password" name="password" required minlength="8" aria-describedby="password-error">
+                <p id="password-error" class="error-message" role="alert"></p>
+                <div id="password-strength" class="strength-bar" data-level="none">
+                    <span>密碼強度：</span><span class="strength-text">無</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">確認密碼</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required aria-describedby="confirmPassword-error">
+                <p id="confirmPassword-error" class="error-message" role="alert"></p>
+            </div>
+
+            <div class="form-group">
+                <label>興趣標籤 (至少勾選 1 個)</label>
+                <div id="interestsContainer" class="tag-container" data-required="true" aria-describedby="interests-error">
+                    <button type="button" class="interest-tag" data-interest="coding">程式</button>
+                    <button type="button" class="interest-tag" data-interest="reading">閱讀</button>
+                    <button type="button" class="interest-tag" data-interest="sport">運動</button>
+                    <button type="button" class="interest-tag" data-interest="music">音樂</button>
+                </div>
+                <p id="interests-error" class="error-message" role="alert"></p>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required aria-describedby="terms-error">
+                <label for="terms">我已閱讀並同意服務條款</label>
+                <p id="terms-error" class="error-message" role="alert"></p>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" id="submitBtn">註冊</button>
+                <button type="button" id="resetBtn">重設</button>
+            </div>
+
+            <div id="successMessage" class="success-message" style="display:none;">
+                🎉 註冊成功！資料已送出。
+            </div>
+        </form>
+    </div>
+
+    <script src="signup_form.js"></script>
+</body>
+</html>
+
