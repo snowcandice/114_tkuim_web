@@ -3,16 +3,16 @@
 * 步驟二:使用 nodemon 啟動開發模式的伺服器。伺服器會自動監聽檔案變動並重新啟動
 
 ## 如何啟動前端（Live Server / Vite）?
-* 啟動方式Live Server:
+ 啟動方式Live Server:
 * 步驟一:在VS Code中，進入專案資料夾
 * 步驟二:開啟html檔案
 * 步驟三:在檔案編輯器中點擊右鍵，選擇 "Open with Live Server"
 
 ## API 端點文件與測試方式 ?
 API端點文件方法有：
-*GET /health(伺服器健康檢查)
-*GET /api/signup(取得當前記憶體中所有報名者的清單與總數)
-*GET /api/signup(提交新的報名資料)
+* GET /health(伺服器健康檢查)
+* GET /api/signup(取得當前記憶體中所有報名者的清單與總數)
+* GET /api/signup(提交新的報名資料)
 
 測試方式cURL指令:
 在新的終端機運行，先輸入curl http://localhost:3001/health，再輸入curl -X POST http://localhost:3001/api/signup -H "Content-Type: application/json" -d '{"name": "Test", "email": "a@a.com", "phone": "0912345678", "password": "passpass", "confirmPassword": "passpass", "interests": ["前端"], "terms": true}'
