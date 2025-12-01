@@ -1,9 +1,14 @@
 {
-  "name": "測試同學",
-  "email": "test@example.com",
-  "phone": "0912345678",
-  "password": "abc12345",
-  "confirmPassword": "abc12345",
-  "interests": ["前端", "後端"],
-  "terms": true
+    "message": "報名成功",
+    "participant": {
+        "id": "UdDk2kDV",
+        "name": "測試同學",
+        "email": "test@example.com",
+        "phone": "0912345678",
+        "interests": [
+            "前端",
+            "後端"
+        ],
+        "createdAt": "2025-11-19T10:20:57.883Z"
+    }
 }
