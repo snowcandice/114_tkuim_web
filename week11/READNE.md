@@ -6,30 +6,22 @@
 
 ## 2. 啟動指令
 * 啟動資料庫服務：進入week11/docker目錄，使用Docker Compose 啟動 MongoDB 容器。
-程式碼:
-<br>
-docker compose up -d
-<br>
+程式碼:docker compose up -d
+
 * 啟動Node.js API服務：進入week/server目錄，安裝依賴並啟動Node.js服務。
 程式碼:
-<br>
 npm install 
-<br>
 npm run dev
-<br>
+
 * 在week11/server目錄建立.env檔案，程式碼如下。這些變數用於Node.js服務連接Docker容器中的MongoDB。
 程式碼:
-<br>
 PORT=3001
-<br>
 MONGODB_URI=mongodb://
-<br>
 week11-user:week11-pass@localhost:27017/week11?
-<br>
 authSource=week11
-<br>
 ALLOWED_ORIGIN=http://localhost:5173
-<br>
+
+
 * 在week11/docker目錄建立mongo-init.js檔案。這個程式會在容器第一次啟動時，建立您 Node.js 服務需要的資料庫和使用者。
 程式碼:
 
