@@ -41,7 +41,7 @@ db.participants.insertOne({
 
 | 動作       | 方法 | URL                       | Body 範例 (JSON)                                                                 | 預期結果                                 |
 |------------|------|---------------------------|----------------------------------------------------------------------------------|------------------------------------------|
-| 建立報名   | `POST`  | `/api/signup`              | `{ "name": "T.A.", "email": "a@test.com", "phone": "0911222333" }`                | 201 Created，回傳 `{ "id": "..." }`      |
+| 建立報名   | `POST`  | `/api/signup`              | `{ "name": "新同學", "email": "new@example.com", "phone": "0911222333" }`                | 201 Created，回傳 `{ "id": "692d48bf363e4e3cd31569e3" }`      |
 | 清單（預設） | `GET`   | `/api/signup`              | （無 Body）                                                                       | 200 OK，回傳 `page: 1`, `limit: 10`      |
 | 清單（分頁） | `GET`   | `/api/signup?page=2&limit=5` | （無 Body）                                                                       | 200 OK，回傳 `page: 2`, `limit: 5`       |
 | 更新資料   | `PATCH` | `/api/signup/{{valid_id}}` | `{ "phone": "0911000111", "status": "approved" }`                                | 200 OK，回傳 `{ "updated": 1 }`          |
@@ -51,16 +51,16 @@ db.participants.insertOne({
 * Mongo Shell 驗證指令範例
 這些指令可用於 mongosh 中，直接驗證資料庫操作結果，並示範 skip/limit
 程式碼:
-# 進入 shell 之後執行
+ 進入 shell 之後執行
 use week11 
 
-# 驗證 Email 唯一索引是否生效
+驗證 Email 唯一索引是否生效
 db.participants.createIndex({ email: 1 }, { unique: true }) 
 
-# 示範分頁：跳過前 5 筆資料，取出接下來 5 筆
+示範分頁：跳過前 5 筆資料，取出接下來 5 筆
 db.participants.find().sort({ createdAt: -1 }).skip(5).limit(5)
 
-# 獲取總數 (用於驗證 GET /total)
+獲取總數 (用於驗證 GET /total)
 db.participants.countDocuments({})
 
 ## 4. 常見問題
