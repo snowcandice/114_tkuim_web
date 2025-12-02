@@ -21,11 +21,14 @@ npm run dev
 * 在week11/server目錄建立.env檔案，程式碼如下。這些變數用於Node.js服務連接Docker容器中的MongoDB。<br>
 程式碼:
 ```js
-PORT=3001  //應用程式的運行埠號
+//應用程式的運行埠號
+PORT=3001  
+//MongoDB 連線字串 (URI)
 MONGODB_URI=mongodb://
-week11-user:week11-pass@localhost:27017/week11? //MongoDB 連線字串 (URI)
-authSource=week11
-ALLOWED_ORIGIN=http://localhost:5173 //允許跨域存取的客戶端網址 (前端應用程式的網址)
+week11-user:week11-pass@localhost:27017/
+week11?authSource=week11  
+//允許跨域存取的客戶端網址 (前端應用程式的網址)  
+ALLOWED_ORIGIN=http://localhost:5173      
 ```
 
 * 在week11/docker目錄建立mongo-init.js檔案。這個程式會在容器第一次啟動時，建立您 Node.js 服務需要的資料庫和使用者。<br>
