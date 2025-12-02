@@ -5,26 +5,31 @@
 * API 測試工具: Postman 
 
 ## 2. 啟動指令
-* 啟動資料庫服務：進入week11/docker目錄，使用Docker Compose 啟動 MongoDB 容器。
-程式碼:docker compose up -d
-
-* 啟動Node.js API服務：進入week/server目錄，安裝依賴並啟動Node.js服務。
+* 啟動資料庫服務：進入week11/docker目錄，使用Docker Compose 啟動 MongoDB 容器。<br>
 程式碼:
+```js
+docker compose up -d
+``` 
+
+* 啟動Node.js API服務：進入week/server目錄，安裝依賴並啟動Node.js服務。<br>
+程式碼:
+```js
 npm install 
 npm run dev
+```
 
-* 在week11/server目錄建立.env檔案，程式碼如下。這些變數用於Node.js服務連接Docker容器中的MongoDB。
+* 在week11/server目錄建立.env檔案，程式碼如下。這些變數用於Node.js服務連接Docker容器中的MongoDB。<br>
 程式碼:
+```js
 PORT=3001
 MONGODB_URI=mongodb://
 week11-user:week11-pass@localhost:27017/week11?
 authSource=week11
 ALLOWED_ORIGIN=http://localhost:5173
+```
 
-
-* 在week11/docker目錄建立mongo-init.js檔案。這個程式會在容器第一次啟動時，建立您 Node.js 服務需要的資料庫和使用者。
+* 在week11/docker目錄建立mongo-init.js檔案。這個程式會在容器第一次啟動時，建立您 Node.js 服務需要的資料庫和使用者。<br>
 程式碼:
-
 ```js
 db.createUser({
   user: 'week11-user',
@@ -39,6 +44,8 @@ db.participants.insertOne({
   phone: '0912345678',
   createdAt: new Date()
 });
+```
+
 
 ## 3. 測試方式
 * 使用Postman，對以下 API 端點進行測試。
@@ -53,25 +60,14 @@ db.participants.insertOne({
 
 
 * Mongo Shell 驗證指令範例
-這些指令可用於 mongosh 中，直接驗證資料庫操作結果，並示範 skip/limit
-<br>
+這些指令可用於 mongosh 中，直接驗證資料庫操作結果，並示範 skip/limit<br>
 程式碼:
-<br>
- 進入 shell 之後執行
- <br>
+```js
 use week11 
-
-驗證 Email 唯一索引是否生效
-<br>
 db.participants.createIndex({ email: 1 }, { unique: true }) 
-<br>
-示範分頁：跳過前 1 筆資料，取出接下來 10 筆
-<br>
 db.participants.find().sort({ createdAt: -1 }).skip(1).limit(10)
-<br>
-獲取總數 (用於驗證 GET /total)
-<br>
 db.participants.countDocuments({})
+```
 
 ## 4. 常見問題
 * GET /api/signup?page=2... 沒有回傳資料：資料庫中總資料數量不足，所以才沒有回傳。
