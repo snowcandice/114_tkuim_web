@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>Antigravity Vibe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #05060f;
+      --card: rgba(255,255,255,0.08);
+      --neon: #7df9ff;
+      --purple: #b983ff;
+      --text: #eaeaff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(circle at 20% 20%, #1a1b3a, var(--bg));
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 32px;
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--neon);
+    }
+
+    nav button {
+      background: transparent;
+      border: 1px solid var(--neon);
+      color: var(--neon);
+      padding: 8px 16px;
+      margin-left: 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    nav button:hover {
+      background: var(--neon);
+      color: #000;
+    }
+
+    .page {
+      display: none;
+      padding: 60px 32px;
+      animation: floatIn 0.8s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes floatIn {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Page 1 */
+    .hero {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      background: linear-gradient(90deg, var(--neon), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    .cards {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 0 40px rgba(125,249,255,0.08);
+      transition: transform 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+    }
+
+    .card h3 {
+      color: var(--neon);
+      margin-bottom: 12px;
+    }
+
+    /* Page 2 */
+    .lab {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .panel {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(16px);
+    }
+
+    .panel h3 {
+      color: var(--purple);
+      margin-bottom: 12px;
+    }
+
+    .float-ball {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--neon));
+      margin: 40px auto;
+      animation: levitate 4s ease-in-out infinite;
+      box-shadow: 0 0 30px rgba(125,249,255,0.6);
+    }
+
+    @keyframes levitate {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      opacity: 0.5;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>ANTIGRAVITY</h1>
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('lab')">Lab</button>
+  </nav>
+</header>
+
+<!-- Page 1 -->
+<section id="home" class="page active">
+  <div class="hero">
+    <h2>Defy Gravity</h2>
+    <p>
+      Antigravity vibe 的世界，漂浮、霓光、未來感。
+      這不是物理法則，而是一種設計語言。
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Floating UI</h3>
+        <p>元件不再貼地，全部懸浮在空間之中。</p>
+      </div>
+      <div class="card">
+        <h3>Neon Energy</h3>
+        <p>以霓虹光線呈現反重力能量流動。</p>
+      </div>
+      <div class="card">
+        <h3>Future Motion</h3>
+        <p>動畫不是裝飾，而是重力被打破的證據。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 2 -->
+<section id="lab" class="page">
+  <div class="lab">
+    <div class="panel">
+      <h3>Antigravity Lab</h3>
+      <p>
+        這裡是實驗區，測試漂浮、能量場與未來互動。
+        所有物件都不應該乖乖待在地面。
+      </p>
+    </div>
+
+    <div class="float-ball"></div>
+
+    <div class="panel">
+      <h3>Status</h3>
+      <p>Gravity: <strong>OFF</strong></p>
+      <p>Energy Field: <strong>Stable</strong></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Antigravity Interface
+</footer>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
