@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>Week12 報名系統</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * { box-sizing: border-box; font-family: "Segoe UI", system-ui, sans-serif; }
+    body { margin:0; min-height:100vh; background: linear-gradient(135deg,#4f46e5,#06b6d4); display:flex; justify-content:center; align-items:center;}
+    .card { background:#ffffff; width:100%; max-width:480px; border-radius:16px; padding:30px; box-shadow:0 20px 40px rgba(0,0,0,0.2); animation:fadeIn 0.4s ease;}
+    h1{text-align:center;margin-bottom:20px;color:#1f2937;}
+    h2,h3{margin-top:0;color:#111827;}
+    label{display:block;margin-bottom:6px;font-size:14px;color:#374151;}
+    input{width:100%;padding:10px 12px;margin-bottom:14px;border-radius:8px;border:1px solid #d1d5db;font-size:15px;}
+    input:focus{outline:none;border-color:#6366f1;}
+    button{width:100%;padding:10px;border-radius:8px;border:none;font-size:15px;cursor:pointer;background:#4f46e5;color:white;transition:background 0.2s;}
+    button:hover{background:#4338ca;}
+    .secondary{background:#ef4444;margin-top:10px;}
+    .secondary:hover{background:#dc2626;}
+    .msg{font-size:14px;color:#ef4444;min-height:18px;margin-top:6px;}
+    ul{list-style:none;padding:0;}
+    li{background:#f9fafb;padding:10px;border-radius:8px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;font-size:14px;}
+    li button{width:auto;padding:6px 10px;font-size:13px;background:#ef4444;}
+    li button:hover{background:#dc2626;}
+    .user-info{font-size:14px;color:#374151;margin-bottom:12px;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  </style>
+</head>
+
+<body>
+<div class="card">
+  <h1>報名系統</h1>
+
+  <!-- 登入區 -->
+  <section id="loginSection">
+    <h2>登入</h2>
+    <form id="loginForm">
+      <label>Email</label>
+      <input type="email" id="loginEmail" placeholder="example@mail.com" required />
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="請輸入密碼" required />
+      <button type="submit">登入</button>
+    </form>
+    <div id="loginMsg" class="msg"></div>
+  </section>
+
+  <!-- 系統區 -->
+  <section id="appSection" style="display:none">
+    <div class="user-info" id="userInfo"></div>
+    <button id="logoutBtn" class="secondary">登出</button>
+
+    <hr style="margin:20px 0" />
+
+    <h3>新增報名</h3>
+    <form id="signupForm">
+      <label>姓名</label>
+      <input id="name" required />
+      <label>Email</label>
+      <input id="email" required />
+      <label>電話</label>
+      <input id="phone" required />
+      <button type="submit">送出報名</button>
+    </form>
+
+    <h3 style="margin-top:24px">報名列表</h3>
+    <ul id="list"></ul>
+    <div id="appMsg" class="msg"></div>
+  </section>
+</div>
+
+<!-- 外接 JS -->
+<script src="app.js"></script>
+</body>
+</html>

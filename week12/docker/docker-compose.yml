@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  mongodb:
+    image: mongo:7
+    # 建議修改：將 container_name 改為 'mongo' 以符合網路連線習慣
+    container_name: mongo 
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      # [關鍵修改 1] 將 Root 帳號和密碼改為 Week 12 專用（或您在 mongo-init.js 中使用的帳號）
+      MONGO_INITDB_ROOT_USERNAME: week12-admin 
+      MONGO_INITDB_ROOT_PASSWORD: week12-pass
+      # [關鍵修改 2] 將初始化資料庫改為 week12
+      MONGO_INITDB_DATABASE: week12 
+    volumes:
+      - ./mongo-data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/init.js:ro
