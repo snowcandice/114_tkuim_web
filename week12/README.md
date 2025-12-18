@@ -42,7 +42,7 @@
 
 ## 三、環境需求
 
-- Node.js v18+
+- Node.js 
 - Docker / Docker Compose
 - npm
 
@@ -56,5 +56,6 @@
 
 ```env
 PORT=3001
-MONGO_URI=mongodb://week12-admin:week12-pass@localhost:27017/week12
-JWT_SECRET=請設定一組長且隨機的字串
+MONGODB_URI=mongodb://week12-admin:week12-pass@localhost:27017/week12?authSource=admin
+ALLOWED_ORIGIN=http://localhost:5173
+JWT_SECRET=week12_super_long_random_secret_key_please_change_me_123456789
