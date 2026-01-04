@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Database data
+mongo-data/
+week11/docker/mongo-data/
+week12/docker/mongo-data/
+**/mongo-data/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
