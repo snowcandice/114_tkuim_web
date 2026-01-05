@@ -9,6 +9,22 @@
 -  容器化的 MongoDB 資料庫
 -  響應式設計 (Responsive Design)
 
+## 加分項目實現說明
+
+### 1. 設計模式應用 (Design Patterns)
+- **後端 (Backend)**:
+  - **MVC Pattern**: 採用 Controller (業務邏輯)、Model (資料定義)、Route (路由分發) 分層架構。
+  - **Repository Pattern (Implicit)**: 使用 Mongoose Models 作為資料存取層，封裝了對 MongoDB 的直接操作。
+  - **Singleton Pattern**: 資料庫連線實例 (`server.js` 中的 `mongoose.connect`) 與 Express App 實例在執行期間皆為單例。
+- **前端 (Frontend)**:
+  - **Observer Pattern**: 使用 React `Context API` (`AuthContext`) 實作全域狀態管理，當登入狀態改變時，所有訂閱的元件 (Observer) 會自動更新。
+  - **Component Pattern**: 將樣式與邏輯封裝於獨立元件 (`TodoItem`, `TodoForm`)，提高重用性與可維護性。
+
+### 2. 登入與權限管理
+- **實作方式**: 採用 JWT (JSON Web Token) 認證機制。
+- **流程**: 使用者登入 -> 後端簽發 Token -> 前端儲存 Token (Local Storage) -> 用戶端請求帶上 Header `Authorization: Bearer <token>` -> 後端 Middleware 驗證權限。
+- **安全性**: 密碼經過 bcrypt 加密儲存，並實作 `authMiddleware` 保護私有路由。
+
 ## 技術選擇
 - **React**: 擁有龐大的生態系統與元件化開發模式，適合建構互動性高的現代化 UI。
 - **Node.js + Express**: 輕量、高效且與前端共用 JavaScript 語言，降低開發切換成本。
