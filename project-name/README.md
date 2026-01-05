@@ -16,9 +16,9 @@
 
 ```mermaid
 graph TD
-    Client[前端應用 (React + Vite)]
-    Server[後端 API (Node.js + Express)]
-    DB[(資料庫 MongoDB)]
+    Client["前端應用 (React + Vite)"]
+    Server["後端 API (Node.js + Express)"]
+    DB[("資料庫 MongoDB")]
 
     Client -->|HTTP Request / JSON| Server
     Server -->|Mongoose ODM| DB
@@ -32,9 +32,9 @@ graph TD
 ```mermaid
 sequenceDiagram
     participant U as 使用者
-    participant F as 前端 (React)
-    participant B as 後端 (Express)
-    participant D as 資料庫 (MongoDB)
+    participant F as "前端 (React)"
+    participant B as "後端 (Express)"
+    participant D as "資料庫 (MongoDB)"
 
     Note over U, F: 使用者登入
     U->>F: 輸入帳號密碼並送出
